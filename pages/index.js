@@ -21,7 +21,10 @@ export default function Home(props) {
 export async function getServerSideProps(context) {
     const devId = process.env.DEVID;
     const apiKey = process.env.APIKEY;
-    const phaseOne = await axios.get(``);
+    const phaseOne = await axios.get(
+        `https://dash.smart-maic.com/api?apikey=${apiKey}&period=hour&devid=${devId}&date1=1675839600&date2=1675854000`,
+    );
+    console.log(phaseOne.data);
     return {
         props: {}, // will be passed to the page component as props
     };
