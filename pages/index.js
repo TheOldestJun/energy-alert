@@ -10,16 +10,17 @@ export default function Home(props) {
     );
 
     setInterval(async () => {
+        let date = new Date();
+        let dateEnd = Date.parse(date) / 1000;
+        let dateBegin = dateEnd - 60;
         try {
             let result = await axios.get(`/api/data`, {
-                period: "hour",
-                /* dateBegin: "",
-                dateEnd: "", */
+                period: "minute",
+                dateBegin: dateBegin,
+                dateEnd: dateEnd,
             });
-            console.log(result.data);
             let sumTotal =
                 (result.data[0] + result.data[1] + result.data[2]) / 1000;
-            console.log(sumTotal);
             setTotal(sumTotal);
         } catch (error) {
             console.log(error);
