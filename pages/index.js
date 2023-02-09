@@ -5,25 +5,27 @@ import Level from "../components/Level";
 
 export default function Home(props) {
     const { phaseOne, phaseTwo, phaseThree } = props;
-    /*     console.log(phaseOne);
-    console.log(phaseTwo);
-    console.log(phaseThree); */
     const [total, setTotal] = useState(
         (phaseOne + phaseTwo + phaseThree) / 1000,
     );
 
-    useEffect(() => {
-        setInterval(async () => {
-            const data = await axios.get(`/api/data`, {
+    setInterval(async () => {
+        try {
+            let result = await axios.get(`/api/data`, {
                 period: "hour",
                 /* dateBegin: "",
                 dateEnd: "", */
             });
-            console.log(data);
-            setTotal(data.data[0] + data.data[1] + data.data[3]);
-            console.log(total);
-        }, 65000);
-    }, [total]);
+            console.log(result.data);
+            let sumTotal =
+                (result.data[0] + result.data[1] + result.data[2]) / 1000;
+            console.log(sumTotal);
+            setTotal(sumTotal);
+        } catch (error) {
+            console.log(error);
+        }
+    }, 65000);
+
     return (
         <>
             <main>
