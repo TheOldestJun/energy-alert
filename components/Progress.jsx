@@ -4,7 +4,7 @@ const Progress = (props) => {
         <>
             <div className='container'>
                 <h1>{name}</h1>
-                <progress max={100} value={value}></progress>
+                <progress max={80} value={value}></progress>
             </div>
         </>
     );
