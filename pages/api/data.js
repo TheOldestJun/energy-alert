@@ -13,10 +13,9 @@ const Data = async (req, res) => {
             rawData.data[0].W2,
             rawData.data[0].W3,
         ];
-        console.log(data);
         res.status(200).send(JSON.stringify(data));
     } catch (error) {
-        console.log(error);
+        console.log("ERROR ON BACK!!!");
     }
 };
 

@@ -23,7 +23,7 @@ export default function Home(props) {
                 (result.data[0] + result.data[1] + result.data[2]) / 1000;
             setTotal(sumTotal);
         } catch (error) {
-            console.log(error);
+            console.log("ERROR ON FRONT!!!");
         }
     }, 65000);
 
